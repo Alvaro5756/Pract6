@@ -1,0 +1,26 @@
+<html>  
+<head>  
+    <title>Paciente</title>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>  
+<body>
+    <h1>Información del Paciente</h1>  
+    <div>  
+        <p><strong>Nombre:</strong> <span th:text="${paciente.nombre}">Nombre del Paciente</span></p>  
+        <p><strong>Edad:</strong> <span th:text="${paciente.edad}">Edad del Paciente</span></p>  
+        <p><strong>Género:</strong> <span th:text="${paciente.genero}">Género del Paciente</span></p>  
+        <p><strong>Historial Médico:</strong></p>  
+        <ul>  
+            <li th:each="historial : ${paciente.historialMedico}" th:text="${historial}">Detalle del Historial</li>  
+        </ul>  
+    </div>  
+    <a href="/pacientes">Volver a la lista de pacientes</a>
+
+    <table>
+        <tr>
+            <td><a href="/pacientes/editar/{id}">Editar Paciente</a></td>
+            <td><a href="/pacientes/eliminar/{id}">Eliminar Paciente</a></td>
+        </tr>
+</html>

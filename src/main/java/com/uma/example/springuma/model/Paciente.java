@@ -18,7 +18,7 @@ public class Paciente {
     // Atributos específicos de PACIENTE 
     @Column(length = 1000) 
     private String historialClinico;
-    
+
     private String idMedicoAsignado; // Relación con médico
 
     public Paciente() {

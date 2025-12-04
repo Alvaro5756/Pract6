@@ -1,5 +1,4 @@
 package com.uma.example.springuma.controller;
-
 import com.uma.example.springuma.model.Paciente;
 import com.uma.example.springuma.model.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,26 +7,25 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/pacientes")
 public class PacienteController {
 
     @Autowired
     private PacienteService pacienteService;
 
     // GET: Obtener lista de pacientes
-    @GetMapping
+    @GetMapping("/api/pacientes")
     public List<Paciente> listarPacientes() {
         return pacienteService.obtenerTodos();
     }
 
     // POST: Crear un paciente (Registro)
-    @PostMapping
+    @PostMapping("/api/pacientes")
     public Paciente crearPaciente(@RequestBody Paciente paciente) {
         return pacienteService.guardarPaciente(paciente);
     }
 
     // PUT: Actualizar datos de un paciente por ID
-    @PutMapping("/{id}")
+    @PutMapping("/api/pacientes")
     public Paciente actualizarPaciente(@PathVariable Long id, @RequestBody Paciente paciente) {
         paciente.setId(id); // Asegurar que actualizamos el ID correcto
         return pacienteService.actualizarPaciente(paciente);

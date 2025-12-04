@@ -13,7 +13,7 @@ public class PacienteService {
 
     // Crear un nuevo paciente
     public Paciente guardarPaciente(Paciente paciente) {
-        return pacienteRepository.save(paciente);
+        return pacienteRepository.saveAndFlush(paciente);
     }
 
     // Leer todos los pacientes (ConsultarDatos)
