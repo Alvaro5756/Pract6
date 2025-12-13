@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Pacientes</title>
+    <style>
+        table, th, td { border: 1px solid black; border-collapse: collapse; padding: 5px; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+
+    <h1>Listado de Pacientes - Ricardio Device</h1>
+
+    <p>
+        <a th:href="@{/pacientes/nuevo}">[ + Añadir Nuevo Paciente ]</a>
+    </p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Historial Clínico</th>
+                <th>Médico Asignado</th> <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="paciente : ${pacientes}">
+                <td th:text="${paciente.id}">1</td>
+                <td th:text="${paciente.nombre}">Nombre</td>
+                <td th:text="${paciente.email}">Email</td>
+                <td th:text="${paciente.historialClinico}">Historial</td>
+                <td th:text="${paciente.idMedicoAsignado}">ID Medico</td>
+                <td>
+                    <a th:href="@{/pacientes/editar/{id}(id=${paciente.id})}">Editar</a> |
+                    <a th:href="@{/pacientes/borrar/{id}(id=${paciente.id})}" 
+                       onclick="return confirm('¿Eliminar paciente?');">Borrar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
