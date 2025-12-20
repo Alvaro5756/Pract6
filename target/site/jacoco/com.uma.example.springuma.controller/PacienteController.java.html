@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PacienteController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">springuma</a> &gt; <a href="index.source.html" class="el_package">com.uma.example.springuma.controller</a> &gt; <span class="el_source">PacienteController.java</span></div><h1>PacienteController.java</h1><pre class="source lang-java linenums">package com.uma.example.springuma.controller;
+import com.uma.example.springuma.model.Paciente;
+import com.uma.example.springuma.model.PacienteService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+<span class="fc" id="L10">public class PacienteController {</span>
+
+    @Autowired
+    private PacienteService pacienteService;
+
+    // GET: Obtener lista de pacientes
+    @GetMapping(&quot;/api/pacientes&quot;)
+    public List&lt;Paciente&gt; listarPacientes() {
+<span class="nc" id="L18">        return pacienteService.obtenerTodos();</span>
+    }
+
+    // POST: Crear un paciente (Registro)
+    @PostMapping(&quot;/api/pacientes&quot;)
+    public Paciente crearPaciente(@RequestBody Paciente paciente) {
+<span class="nc" id="L24">        return pacienteService.guardarPaciente(paciente);</span>
+    }
+
+    // PUT: Actualizar datos de un paciente por ID
+    @PutMapping(&quot;/api/pacientes&quot;)
+    public Paciente actualizarPaciente(@PathVariable Long id, @RequestBody Paciente paciente) {
+<span class="nc" id="L30">        paciente.setId(id); // Asegurar que actualizamos el ID correcto</span>
+<span class="nc" id="L31">        return pacienteService.actualizarPaciente(paciente);</span>
+    }
+
+    // DELETE: Eliminar un paciente
+    @DeleteMapping(&quot;/{id}&quot;)
+    public void eliminarPaciente(@PathVariable Long id) {
+<span class="nc" id="L37">        pacienteService.eliminarPaciente(id);</span>
+<span class="nc" id="L38">    }</span>
+    
+    // GET: Ver detalle de un solo paciente
+    @GetMapping(&quot;/{id}&quot;)
+    public Paciente verPaciente(@PathVariable Long id) {
+<span class="nc" id="L43">        return pacienteService.obtenerPorId(id).orElse(null);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>

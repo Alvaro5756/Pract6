@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Paciente.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">springuma</a> &gt; <a href="index.source.html" class="el_package">com.uma.example.springuma.model</a> &gt; <span class="el_source">Paciente.java</span></div><h1>Paciente.java</h1><pre class="source lang-java linenums">package com.uma.example.springuma.model;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = &quot;pacientes&quot;)
+public class Paciente {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    // Atributos heredados de USUARIO 
+    private String nombre;
+    private String email;
+    private String contrasena;
+
+    // Atributos específicos de PACIENTE 
+    @Column(length = 1000) 
+    private String historialClinico;
+
+    private String idMedicoAsignado; // Relación con médico
+
+<span class="fc" id="L24">    public Paciente() {</span>
+<span class="fc" id="L25">    }</span>
+
+<span class="fc" id="L27">    public Paciente(String nombre, String email, String contrasena, String historialClinico) {</span>
+<span class="fc" id="L28">        this.nombre = nombre;</span>
+<span class="fc" id="L29">        this.email = email;</span>
+<span class="fc" id="L30">        this.contrasena = contrasena;</span>
+<span class="fc" id="L31">        this.historialClinico = historialClinico;</span>
+<span class="fc" id="L32">    }</span>
+
+    // Getters y Setters
+<span class="fc" id="L35">    public Long getId() { return id; }</span>
+<span class="fc" id="L36">    public void setId(Long id) { this.id = id; }</span>
+    
+<span class="fc" id="L38">    public String getNombre() { return nombre; }</span>
+<span class="fc" id="L39">    public void setNombre(String nombre) { this.nombre = nombre; }</span>
+    
+<span class="fc" id="L41">    public String getEmail() { return email; }</span>
+<span class="fc" id="L42">    public void setEmail(String email) { this.email = email; }</span>
+    
+<span class="fc" id="L44">    public String getContrasena() { return contrasena; }</span>
+<span class="fc" id="L45">    public void setContrasena(String contrasena) { this.contrasena = contrasena; }</span>
+    
+<span class="fc" id="L47">    public String getHistorialClinico() { return historialClinico; }</span>
+<span class="fc" id="L48">    public void setHistorialClinico(String historialClinico) { this.historialClinico = historialClinico; }</span>
+
+<span class="fc" id="L50">    public String getIdMedicoAsignado() { return idMedicoAsignado; }</span>
+<span class="fc" id="L51">    public void setIdMedicoAsignado(String idMedicoAsignado) { this.idMedicoAsignado = idMedicoAsignado; }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>

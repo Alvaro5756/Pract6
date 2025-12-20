@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle del Paciente</title>
+</head>
+<body>
+
+    <h2 th:text="${paciente.id} ? 'Editar Paciente' : 'Nuevo Paciente'">Formulario Paciente</h2>
+
+    <form th:action="@{/pacientes/guardar}" th:object="${paciente}" method="post">
+        
+        <input type="hidden" th:field="*{id}" />
+
+        <fieldset>
+            <legend>Datos Personales</legend>
+            
+            <p>
+                <label>Nombre:</label><br>
+                <input type="text" th:field="*{nombre}" required />
+            </p>
+
+            <p>
+                <label>Email:</label><br>
+                <input type="email" th:field="*{email}" required />
+            </p>
+
+            <p>
+                <label>Contraseña:</label><br>
+                <input type="password" th:field="*{contrasena}" required />
+            </p>
+        </fieldset>
+
+        <fieldset>
+            <legend>Datos Médicos</legend>
+
+            <p>
+                <label>Historial Clínico:</label><br>
+                <textarea th:field="*{historialClinico}" rows="4" cols="50"></textarea>
+            </p>
+
+            <p>
+                <label>ID Médico Asignado:</label><br>
+                <input type="text" th:field="*{idMedicoAsignado}" />
+            </p>
+        </fieldset>
+
+        <p>
+            <input type="submit" value="Guardar Paciente" />
+            <input type="reset" value="Restablecer" />
+        </p>
+
+    </form>
+    
+    <p>
+        <a th:href="@{/pacientes}">Volver al listado</a>
+    </p>
+
+</body>
+</html>
