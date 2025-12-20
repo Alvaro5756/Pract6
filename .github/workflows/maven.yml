@@ -1,0 +1,25 @@
+name: Java CI with Maven
+
+on:
+  push:
+    branches: [ "main" ] # Se ejecuta al hacer push a la rama main
+  pull_request:
+    branches: [ "main" ] # Se ejecuta al abrir un Pull Request hacia main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # Sistema operativo de la máquina virtual
+
+    steps:
+    - uses: actions/checkout@v3 # Descarga tu código en la máquina virtual
+    
+    - name: Set up JDK 21
+      uses: actions/setup-java@v3 # Prepara el entorno de Java
+      with:
+        java-version: '21' # Ajustado a tu proyecto (en las slides aparece 18)
+        distribution: 'temurin'
+        cache: maven
+
+    - name: Ejecutar Tests y Cobertura
+     
+      run: mvn clean jacoco:prepare-agent test install jacoco:report -B
